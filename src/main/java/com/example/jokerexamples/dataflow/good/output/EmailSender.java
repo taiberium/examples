@@ -8,15 +8,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 @RequiredArgsConstructor
-public class EmailOutput {
+public class EmailSender {
 
     private final JavaMailSender javaMailSender;
     @Value("${email.source:taiberium@mail.ru}")
     private String fromEmail;
-
-    public void sendAlarmEmail() {
-        sendEmail("example@gmail.com","ALARM","Something is broken");
-    }
 
     public void sendEmail(String to, String subject, String text) {
         SimpleMailMessage message = new SimpleMailMessage();

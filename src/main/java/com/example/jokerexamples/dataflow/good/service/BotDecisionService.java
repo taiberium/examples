@@ -1,7 +1,7 @@
 package com.example.jokerexamples.dataflow.good.service;
 
 import com.example.jokerexamples.dataflow.good.output.BotOutput;
-import com.example.jokerexamples.dataflow.good.output.EmailOutput;
+import com.example.jokerexamples.dataflow.good.output.EmailSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class BotDecisionService {
 
     private final BotOutput botOutput;
-    private final EmailOutput emailOutput;
+    private final EmailService emailService;
     @Value("${admin.chat.id:0}")
     public long adminChatId;
 
@@ -30,7 +30,7 @@ public class BotDecisionService {
                 String errorMessage = "error while handling the message";
                 botOutput.sendMessage(adminChatId, errorMessage);
                 botOutput.sendMessage(chatId, errorMessage);
-                emailOutput.sendAlarmEmail();
+                emailService.sendAlarmEmail();
             }
             case "HANDLE" -> botOutput.sendMessage(chatId, "correct request received");
             default -> botOutput.sendMessage(chatId, "unknown message type, please try again");
