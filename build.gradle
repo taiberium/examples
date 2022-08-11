@@ -27,6 +27,12 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.amqp:spring-rabbit-test'
+
+	//email
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
+	//telegram bot
+	implementation 'com.github.pengrad:java-telegram-bot-api:6.1.0'
 }
 
 tasks.named('test') {

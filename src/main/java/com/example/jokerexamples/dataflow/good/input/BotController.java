@@ -1,4 +1,4 @@
-package com.example.jokerexamples.dataflow.good.controller;
+package com.example.jokerexamples.dataflow.good.input;
 
 import com.example.jokerexamples.dataflow.good.service.BotDecisionService;
 import com.pengrad.telegrambot.TelegramBot;
