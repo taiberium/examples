@@ -26,7 +26,7 @@ import javax.annotation.PostConstruct;
  */
 @Controller
 @RequiredArgsConstructor
-public class BotController {
+public class TelegramCarListener {
 
     private final TelegramBot bot;
     private final BotDecisionService botDecisionService;
