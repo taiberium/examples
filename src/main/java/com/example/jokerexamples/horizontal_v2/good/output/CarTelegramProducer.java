@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RequiredArgsConstructor
-public class TelegramCarProducer {
+public class CarTelegramProducer {
 
     private final TelegramBot bot;
 

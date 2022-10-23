@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RequiredArgsConstructor
-public class RabbitCarListener {
+public class CarRabbitListener {
 
     private final EmailService emailService;
 

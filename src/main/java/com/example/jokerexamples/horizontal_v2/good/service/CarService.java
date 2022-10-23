@@ -1,6 +1,6 @@
 package com.example.jokerexamples.horizontal_v2.good.service;
 
-import com.example.jokerexamples.horizontal_v2.good.output.TelegramCarProducer;
+import com.example.jokerexamples.horizontal_v2.good.output.CarTelegramProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 @RequiredArgsConstructor
-public class BotDecisionService {
+public class CarService {
 
-    private final TelegramCarProducer telegramCarProducer;
+    private final CarTelegramProducer carTelegramProducer;
     private final EmailService emailService;
     @Value("${admin.chat.id:0}")
     public long adminChatId;
@@ -27,12 +27,12 @@ public class BotDecisionService {
         switch (message) {
             case "ERROR" -> {
                 String errorMessage = "error while handling the message";
-                telegramCarProducer.sendMessage(adminChatId, errorMessage);
-                telegramCarProducer.sendMessage(chatId, errorMessage);
+                carTelegramProducer.sendMessage(adminChatId, errorMessage);
+                carTelegramProducer.sendMessage(chatId, errorMessage);
                 emailService.sendAlarmEmail();
             }
-            case "HANDLE" -> telegramCarProducer.sendMessage(chatId, "correct request received");
-            default -> telegramCarProducer.sendMessage(chatId, "unknown message type, please try again");
+            case "HANDLE" -> carTelegramProducer.sendMessage(chatId, "correct request received");
+            default -> carTelegramProducer.sendMessage(chatId, "unknown message type, please try again");
         }
     }
 }

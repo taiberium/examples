@@ -1,6 +1,6 @@
 package com.example.jokerexamples.horizontal_v2.good.input;
 
-import com.example.jokerexamples.horizontal_v2.good.service.BotDecisionService;
+import com.example.jokerexamples.horizontal_v2.good.service.CarService;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
 import com.pengrad.telegrambot.model.Update;
@@ -26,10 +26,10 @@ import javax.annotation.PostConstruct;
  */
 @Controller
 @RequiredArgsConstructor
-public class TelegramCarListener {
+public class CarTelegramListener {
 
     private final TelegramBot bot;
-    private final BotDecisionService botDecisionService;
+    private final CarService carService;
 
     @PostConstruct
     public void init() {
@@ -48,7 +48,7 @@ public class TelegramCarListener {
         String messageText = botUpdate.message().text();
 
         if (StringUtils.hasText(messageText)) {
-            botDecisionService.handleMessage(chatId, messageText);
+            carService.handleMessage(chatId, messageText);
         }
     }
 
